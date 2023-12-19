@@ -22,14 +22,16 @@
         <h2>Totalizando Tudo</h2>
         <p>Analisando o valor que você digitou, <strong><?=$totalSecs?> segundos</strong> equivalem a um total de:</p>
         <?php
-            $semanas=floor($totalSecs/604800);
-            $semanasRest=$totalSecs%604800;
-            $dias=floor($semanasRest/86400);
-            $diasRest=$totalSecs%86400;
-            $horas=floor($diasRest/3600);
-            $horasRest=$totalSecs%3600;
-            $minutos=floor($horasRest/60);
-            $segundos=$totalSecs%60;
+            $sobra=$totalSecs;
+            $semanas=(int)($totalSecs/604800);
+            $sobra=$sobra%604800;
+            $dias=(int)($sobra/86400);
+            $sobra=$sobra%86400;
+            $horas=(int)($sobra/3600);
+            $sobra=$sobra%3600;
+            $minutos=(int)($sobra/60);
+            $sobra=$sobra%60;
+            $segundos=$sobra;
             echo"<ul>";
             echo"<li>$semanas semana(s)</li>";
             echo"<li>$dias dia(s)</li>";
